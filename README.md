@@ -2,7 +2,8 @@
 Collections of Python scripts for reading ILM policies
 
 1. Make sure that _cat/commercial/ilm_policy.json is in the same folder as the code
-2. run python3.10 ilm-policy-parser-mike.py
+2. run 
+  > $python ilm-policy-parser-mike.py
 3. Results should be:
   - Showing *Index Name*, *ILM Policy name*, *Retention* and *Phase*
   - Notably remove from the results are:  Phases in *hot*, *cold*, *warm*, and *frozen* as well as empty (n/a). As a result, indices roll over in these phase are not reported.
