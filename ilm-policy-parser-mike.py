@@ -13,7 +13,6 @@ def parse_ilm_file(file_path):
     rows = []
 
     for policy_name, policy_info in ilm_data.items():
-        # Skip policies containing "metrics", "logs", "elastic-agent-ilm", or "kibana-event-log-policy"
         if (
             "metrics" in policy_name.lower() or
             ("logs" in policy_name.lower() and "logs-" not in policy_name.lower()) or
@@ -37,18 +36,17 @@ def parse_ilm_file(file_path):
             short_index = strip_trailing_date(index)
 
             for phase_name, phase_data in phases.items():
-                # Skip "hot", "cold", "warm", and "frozen" phases
                 if phase_name.lower() in ["hot", "cold", "warm", "frozen"]:
                     continue
 
                 # Only include if retention is non-empty
                 min_age = phase_data.get("min_age", "N/A")
                 if min_age == "N/A" or min_age == "":
-                    continue  # Skip rows with empty or 'N/A' retention
+                    continue 
 
                 key = (short_index, policy_name, phase_name)
                 if key in seen:
-                    continue  # Skip if this combination has been added already
+                    continue  
                 seen.add(key)
 
                 row = [
