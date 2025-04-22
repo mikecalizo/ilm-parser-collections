@@ -54,3 +54,14 @@ def parse_ilm_file(file_path):
                     policy_name,
                     min_age if phase_name == "delete" else "",
                     phase_name
+                ]
+                rows.append(row)
+
+    print(f"{'Index Name':<80} {'ILM Policy':<25} {'Retention':<10} {'Phase':<10}")
+    print("-" * 130)
+
+    for row in rows:
+        print(f"{row[0]:<80} {row[1]:<25} {row[2]:<10} {row[3]:<10}")
+
+if __name__ == "__main__":
+    parse_ilm_file("ilm_policies.json")
