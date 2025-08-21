@@ -318,13 +318,13 @@ class EnhancedILMMonitor:
         
         # Health rating
         if health_score >= 95:
-            rating = "🟢 EXCELLENT"
+            rating = " EXCELLENT"
         elif health_score >= 85:
-            rating = "🟡 GOOD"
+            rating = " GOOD"
         elif health_score >= 70:
-            rating = "🟠 FAIR"
+            rating = " FAIR"
         else:
-            rating = "🔴 POOR"
+            rating = " POOR"
         
         print(f"Health Score: {health_score:.1f}% {rating}")
         print(f"Total Indices: {total_indices}")
