@@ -165,29 +165,6 @@ def show_recommendations(data):
     
     return recs
 
-def health_score(summary, errors):
-    total = sum(p['indices'] for p in summary.values())
-    error_count = len(errors)
-    
-    if total == 0:
-        score = 0
-    else:
-        score = max(0, 100 - (error_count / total * 100))
-    
-    if score >= 95:
-        rating = " EXCELLENT"
-    elif score >= 85:
-        rating = " GOOD"
-    elif score >= 70:
-        rating = " FAIR"
-    else:
-        rating = " POOR"
-    
-    print(f"\n HEALTH: {score:.1f}% {rating}")
-    print(f"Total: {total} indices, Errors: {error_count}")
-    
-    return score
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dir", default="./")
@@ -205,18 +182,15 @@ def main():
     if args.summary_only:
         summary = show_policies(data)
         errors = show_errors(data)
-        health_score(summary, errors)
     elif args.errors_only:
         summary = show_policies(data)
         errors = show_errors(data)
-        health_score(summary, errors)
     elif args.recommendations_only:
         show_recommendations(data)
     else:
         summary = show_policies(data)
         errors = show_errors(data)
         recs = show_recommendations(data)
-        health_score(summary, errors)
     
     if args.export:
         filename = args.export if args.export != "auto" else f"ilm_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
