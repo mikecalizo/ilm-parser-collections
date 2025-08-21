@@ -6,7 +6,7 @@ Collections of Python scripts for reading ILM policies
 
 To use the code:
 
-> $python ilm-policy-parsing-nice-report.py --dir  ~/(diagnostic-dir)/commercial/
+> $python ilm-policy-parser.py --dir  ~/(diagnostic-dir)/commercial/
 
 <img width="1906" height="637" alt="image" src="https://github.com/user-attachments/assets/e34f2fcc-657f-4918-bd85-8f075c06b7c4" />
 <img width="1004" height="496" alt="image" src="https://github.com/user-attachments/assets/02b0709f-b9af-47a7-a0af-0a5185b04051" />
